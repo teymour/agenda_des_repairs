@@ -6,10 +6,10 @@
     <meta name="description" content="">
     <title>L'Agenda des Repairs · La communauté de la réparation bénévole</title>
 
-	<link href="/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="<?php echo $urlbase; ?>/css/bootstrap.min.css" rel="stylesheet" />
 	<meta name="theme-color" content="#7952b3">
     <!-- Custom styles for this template -->
-    <link href="/css/agenda.css" rel="stylesheet" />
+    <link href="<?php echo $urlbase; ?>/css/agenda.css" rel="stylesheet" />
   </head>
   <body>
 
