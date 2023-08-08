@@ -21,7 +21,7 @@
       </a>
 
       <ul class="nav nav-pills">
-        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Accueil</a></li>
+        <li class="nav-item"><a href="/create" class="nav-link active" aria-current="page">Proposer un repair</a></li>
         <li class="nav-item"><a href="#" class="nav-link">Ma ville</a></li>
         <li class="nav-item"><a href="#" class="nav-link">La carte</a></li>
       </ul>
