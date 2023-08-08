@@ -26,7 +26,7 @@ class CtrlAgenda {
                 image BLOB
             )
         ");
-        $event=new DB\SQL\Mapper($f3->get('DB'),'event');
+        $event = new Event($f3->get('DB'));
         $event->nom='RCP5';
         $event->description = "A la mairie du 5ème";
         $event->date = "2023-08-12";

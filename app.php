@@ -15,10 +15,10 @@ $f3->set('urlbase', $f3->get('SCHEME').'://'.$_SERVER['SERVER_NAME'].(!in_array(
 require_once('config/config.php');
 $f3->set('config', $config);
 
+require_once('app/models/Event.class.php');
+require_once('app/models/DBManager.class.php');
 
-$db = new DB\SQL('sqlite:'.$f3->get('ROOT').'/agenda.sqlite');
-$f3->set('DB', $db);
-$event=new DB\SQL\Mapper($db,'event');
+DBManager::createDB('sqlite:'.$f3->get('ROOT').'/agenda.sqlite');
 
 include('app/routes.php');
 
