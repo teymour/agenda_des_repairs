@@ -13,8 +13,9 @@ class CtrlAgenda {
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 nom VARCHAR(255),
                 description TEXT,
-                date_debut VARCHAR(20),
-                date_fin VARCHAR(20),
+                date VARCHAR(10),
+                heure_debut VARCHAR(5),
+                heure_fin VARCHAR(5),
                 adresse VARCCHAR(255),
                 lat FLOAT,
                 lng FLOAT,
@@ -28,8 +29,9 @@ class CtrlAgenda {
         $event=new DB\SQL\Mapper($f3->get('DB'),'event');
         $event->nom='RCP5';
         $event->description = "A la mairie du 5ème";
-        $event->date_debut = "2023-08-12 09:30";
-        $event->date_fin = "2023-08-12 12:30";
+        $event->date = "2023-08-12";
+        $event->heure_debut = "09:30";
+        $event->heure_fin = "12:30";
         $event->adresse = "place du panthéon 75005 Paris";
         $event->lat = 48.7;
         $event->lng = 2.3;
