@@ -1,16 +1,8 @@
 <?php
 
-class Event extends DB\SQL\Mapper {
-	function __construct() {
-        parent::__construct(DBManager::getDB(), 'event');
-	}
+require_once('MapperTable.class.php');
 
-	static function findById($id) {
-		$e = new Event();
-		$e->load(array('id=?',$id));
-		return $e;
-	}
-
+class Event extends MapperTable {
 
 	function save() {
 		if (!$this->authorization_key) {
@@ -19,6 +11,11 @@ class Event extends DB\SQL\Mapper {
 		return parent::save();
 	}
 
+	function setAdresse($a) {
+		$this->lat = 48.8534100;
+		$this->lng = 2.3488000;
+		return $a;
+	}
 
 	function copyFrom($arg, $func = null) {
 		if ($this->authorization_key && $arg == 'POST' && (!isset($_POST['authorization_key'])  || ($_POST['authorization_key'] != $this->authorization_key)) ) {
@@ -35,14 +32,6 @@ class Event extends DB\SQL\Mapper {
 				   "lat" => 1, "lng" => 1, "url_web" => 1, "url_inscription" => 1, "email" => 1, "image" => 1
 			     )
 		);
-	}
-
-	function values() {
-		$v = [];
-		foreach($this->fields() as $f) {
-			$v[] = $this->get($f);
-		}
-		return $v;
 	}
 
 	static function createTable() {

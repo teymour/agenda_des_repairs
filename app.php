@@ -15,9 +15,8 @@ $f3->set('urlbase', $f3->get('SCHEME').'://'.$_SERVER['SERVER_NAME'].(!in_array(
 require_once('config/config.php');
 $f3->set('config', $config);
 
-require_once('app/models/Event.class.php');
 require_once('app/models/DBManager.class.php');
-
+require_once('app/models/Event.class.php');
 DBManager::createDB('sqlite:'.$f3->get('ROOT').'/agenda.sqlite');
 
 include('app/routes.php');
