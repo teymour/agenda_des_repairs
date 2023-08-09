@@ -11,6 +11,21 @@ class Event extends DB\SQL\Mapper {
 		return $e;
 	}
 
+
+
+
+	function copyFrom($arg, $func = null) {
+		return parent::copyFrom($arg, 'Event::filterCopyFrom');
+	}
+	static function filterCopyFrom($fields) {
+		return array_intersect_key(
+			$fields,
+			array(
+				   "nom" => 1, "description" => 1, "date" => 1, "heure_debut" => 1, "heure_fin" => 1, "adresse" => 1,
+				   "lat" => 1, "lng" => 1, "url_web" => 1, "url_inscription" => 1, "email" => 1, "image" => 1
+			     )
+		);
+	}
 	static function createTable() {
 		DBManager::getDB()->exec("
 			CREATE TABLE event
