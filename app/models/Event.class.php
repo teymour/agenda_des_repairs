@@ -12,11 +12,21 @@ class Event extends DB\SQL\Mapper {
 	}
 
 
+	function save() {
+		if (!$this->authorization_key) {
+			$this->authorization_key = sha1(implode(',',$this->values()).rand());
+		}
+		return parent::save();
+	}
 
 
 	function copyFrom($arg, $func = null) {
+		if ($this->authorization_key && $arg == 'POST' && (!isset($_POST['authorization_key'])  || ($_POST['authorization_key'] != $this->authorization_key)) ) {
+			throw new Exception('Not authorized to edit this object');
+		}
 		return parent::copyFrom($arg, 'Event::filterCopyFrom');
 	}
+
 	static function filterCopyFrom($fields) {
 		return array_intersect_key(
 			$fields,
@@ -26,6 +36,15 @@ class Event extends DB\SQL\Mapper {
 			     )
 		);
 	}
+
+	function values() {
+		$v = [];
+		foreach($this->fields() as $f) {
+			$v[] = $this->get($f);
+		}
+		return $v;
+	}
+
 	static function createTable() {
 		DBManager::getDB()->exec("
 			CREATE TABLE event

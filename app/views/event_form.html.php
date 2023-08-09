@@ -64,6 +64,8 @@
     <input type="checkbox" class="form-check-input" id="remember">
     <label class="form-check-label" for="remember">Je souhaite être reconnu à l'avenir par ce site (pour éviter d'avoir à ressaisir des informations)</label>
   </div>
-
+  <?php if ($event->authorization_key): ?>
+  <input type="hidden" name="authorization_key" value="<?php echo $event->authorization_key; ?>"/>
+  <?php endif; ?>
   <button type="submit" class="btn btn-primary">Proposer cet évènement repair</button>
 </form>
