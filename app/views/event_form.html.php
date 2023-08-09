@@ -9,9 +9,7 @@
   </div>
   <div class="mb-3">
       <label for="description" class="form-label">Description</label>
-      <textarea type="text" class="form-control" id="description" name="description" aria-description="descriptionHelp"/>
-      <?php echo $event->description; ?>
-      </textarea>
+      <textarea type="text" class="form-control" id="description" name="description" aria-description="descriptionHelp"/><?php echo $event->description; ?></textarea>
       <div id="descriptionHelp" class="form-text">Décrivez ici ce que vous proposez durant le repair afin de donner envie de venir réparer</div>
   </div>
   <div class="row mb-3">
